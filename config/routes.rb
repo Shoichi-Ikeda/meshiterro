@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'post_images#index'
-  devise_for :users
+  devise_for :user
+  root 'post_images#index'
   resources :post_images, only: [:new, :create, :index, :show, :destroy]
-end
-
+    resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
+  end
